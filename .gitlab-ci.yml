@@ -1,0 +1,17 @@
+image: drecom/ubuntu-ruby
+before_script:
+  - ruby -v
+  - apt-get update -q && apt-get install ffmpeg -yqq
+  - gem install bundler
+  - bin/setup
+
+rubocop:
+  script:
+  - bundle exec rubocop
+
+rspec:
+  script:
+  - bundle exec rspec
+  artifacts:
+    paths:
+      - web/coverage/
